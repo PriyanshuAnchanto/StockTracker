@@ -1,5 +1,5 @@
 class Stock < ApplicationRecord
-  has_many :user_stocks
+  has_many :user_stocks, dependent: :destroy
   has_many :users, through: :user_stocks
   validates :name, :ticker, presence: true
   def self.new_lookup(ticker)
@@ -12,4 +12,9 @@ class Stock < ApplicationRecord
       return nil
     end
   end
+
+  def self.db_lookup(ticker)
+    where(ticker: ticker).first
+  end
+
 end
