@@ -13,7 +13,8 @@
           <tr>
             <td><%= friend.first_name+" "+friend.last_name %></td>
             <td><%= friend.email %></td>
-            <td>placeholder</td>
+            <td> <%= link_to 'View profile',user_profile_path(friend),class: "btn btn-primary"%></td>
+            <td> <%= link_to 'Remove Friend',friendship_path(friend),class: "btn btn-warning",method: :delete %></td>
           </tr>
         <% end %>
       </tbody>
